@@ -1,0 +1,63 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Aluno {
+  id           Int       @id @default(autoincrement())
+  nome         String
+  idade        Int
+  email        String
+  telefone     String?
+  dataCadastro DateTime?
+  instrutor    Instrutor? @relation(fields: [instrutorId], references: [id])
+  instrutorId  Int?
+  treinos      Treino[]
+}
+
+model Instrutor {
+  id     Int     @id @default(autoincrement())
+  nome   String
+  alunos Aluno[]
+}
+
+model Treino {
+  id            Int       @id @default(autoincrement())
+  descricao     String
+  dataInicio    DateTime
+  ativo         Boolean   @default(true)
+  aluno         Aluno     @relation(fields: [alunoId], references: [id])
+  alunoId       Int
+  exercicios    TreinoExercicio[]
+}
+
+model Exercicio {
+  id             Int       @id @default(autoincrement())
+  nome           String
+  grupoMuscular  String
+  descricao      String?
+
+  // Relação: Um exercício pode estar em vários treinos
+  treinos        TreinoExercicio[]
+}
+
+model TreinoExercicio {
+  id            Int       @id @default(autoincrement())
+
+  // Relação: Treino associado
+  treino        Treino    @relation(fields: [treinoId], references: [id])
+  treinoId      Int
+
+  // Relação: Exercício associado
+  exercicio     Exercicio @relation(fields: [exercicioId], references: [id])
+  exercicioId   Int
+
+  // Dados adicionais do exercício no treino
+  series        Int
+  repeticoes    Int
+  carga         Float?
+}
