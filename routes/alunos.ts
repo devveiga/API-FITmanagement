@@ -2,6 +2,7 @@ import { Aluno, PrismaClient } from '@prisma/client'
 import { Router } from 'express'
 import { z } from 'zod'
 import nodemailer from "nodemailer"
+import { verificaToken } from '../middlewares/verificaToken'
 
 const prisma = new PrismaClient()
 
@@ -14,9 +15,10 @@ const alunoSchema = z.object({
   telefone: z.string().optional(),
   dataCadastro: z.string().optional(),
   instrutorId: z.number().int().optional(),
+  usuarioId: z.string()
 })
 
-router.get("/", async (req, res) => {
+router.get("/", verificaToken, async (req, res) => {
   try {
     const alunos = await prisma.aluno.findMany()
     res.status(200).json(alunos)
@@ -25,14 +27,14 @@ router.get("/", async (req, res) => {
   }
 })
 
-router.post("/", async (req, res) => {
+router.post("/", verificaToken, async (req, res) => {
   const valida = alunoSchema.safeParse(req.body);
   if (!valida.success) {
     res.status(400).json({ erro: valida.error });
     return;
   }
 
-  const { nome, idade, email, telefone, dataCadastro, instrutorId } = valida.data;
+  const { nome, idade, email, telefone, dataCadastro, instrutorId, usuarioId} = valida.data;
 
   try {
     const aluno = await prisma.aluno.create({
@@ -42,7 +44,8 @@ router.post("/", async (req, res) => {
         email,
         telefone,
         dataCadastro,
-        instrutorId
+        instrutorId,
+        usuarioId
       }
     });
     res.status(201).json(aluno);
@@ -51,7 +54,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", verificaToken, async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -86,7 +89,7 @@ router.delete("/:id", async (req, res) => {
 });
 
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", verificaToken, async (req, res) => {
   const { id } = req.params
 
   const valida = alunoSchema.safeParse(req.body)

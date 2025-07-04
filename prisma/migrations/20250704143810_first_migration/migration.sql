@@ -5,10 +5,9 @@ CREATE TABLE `Aluno` (
     `idade` INTEGER NOT NULL,
     `email` VARCHAR(191) NOT NULL,
     `telefone` VARCHAR(191) NULL,
-    `dataCadastro` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
-    `instrutorId` INTEGER NOT NULL,
+    `dataCadastro` DATETIME(3) NULL,
+    `instrutorId` INTEGER NULL,
 
-    UNIQUE INDEX `Aluno_email_key`(`email`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -16,10 +15,7 @@ CREATE TABLE `Aluno` (
 CREATE TABLE `Instrutor` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `nome` VARCHAR(191) NOT NULL,
-    `especialidade` VARCHAR(191) NULL,
-    `email` VARCHAR(191) NOT NULL,
 
-    UNIQUE INDEX `Instrutor_email_key`(`email`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -57,7 +53,7 @@ CREATE TABLE `TreinoExercicio` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- AddForeignKey
-ALTER TABLE `Aluno` ADD CONSTRAINT `Aluno_instrutorId_fkey` FOREIGN KEY (`instrutorId`) REFERENCES `Instrutor`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Aluno` ADD CONSTRAINT `Aluno_instrutorId_fkey` FOREIGN KEY (`instrutorId`) REFERENCES `Instrutor`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `Treino` ADD CONSTRAINT `Treino_alunoId_fkey` FOREIGN KEY (`alunoId`) REFERENCES `Aluno`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;

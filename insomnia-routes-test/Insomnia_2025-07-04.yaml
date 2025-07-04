@@ -1,0 +1,934 @@
+type: collection.insomnia.rest/5.0
+name: api_security
+meta:
+  id: wrk_5e33663ce2904ea288039403ef5e1b6f
+  created: 1751640165263
+  modified: 1751640165263
+  description: ""
+collection:
+  - name: ALUNOS
+    meta:
+      id: fld_80b58152cfc846abb519666654b3bbb5
+      created: 1751640467089
+      modified: 1751640476345
+      sortKey: -1751640467089
+      description: ""
+    children:
+      - url: http://localhost:3000/alunos
+        name: Criar Aluno
+        meta:
+          id: req_1258ca46df2b424ab7c7721cbea63d3f
+          created: 1751640402555
+          modified: 1751644317862
+          isPrivate: false
+          description: ""
+          sortKey: -1751640647856
+        method: POST
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/alunos/1
+        name: Deletar Aluno
+        meta:
+          id: req_7877324761d149f6b26894b5fb6541fa
+          created: 1751640402555
+          modified: 1751640659446
+          isPrivate: false
+          description: ""
+          sortKey: -1751640648056
+        method: DELETE
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/alunos/1
+        name: Atualizar Aluno
+        meta:
+          id: req_ed52db92e39b426a8e6c7bea6a1d396e
+          created: 1751640402555
+          modified: 1751640647798
+          isPrivate: false
+          description: ""
+          sortKey: -1751640647756
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            [
+              {
+                "nome": "Jo\u00e3o Atualizado",
+                "idade": 26,
+                "email": "joao@email.com",
+                "telefone": "51999999999"
+              }
+            ]
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/alunos
+        name: Listar Alunos
+        meta:
+          id: req_f825514a83ad4c6eb22e0a172f749b98
+          created: 1751640402555
+          modified: 1751642877088
+          isPrivate: false
+          description: ""
+          sortKey: -1751640647956
+        method: GET
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: TREINO
+    meta:
+      id: fld_686a69eec4744c11a8410eac8bdc0883
+      created: 1751640494525
+      modified: 1751640494525
+      sortKey: -1751640494525
+      description: ""
+    children:
+      - url: http://localhost:3000/treinos
+        name: Criar Treino
+        meta:
+          id: req_0f6552e4e2a047eabbac2fa077fec0f6
+          created: 1751640402555
+          modified: 1751640536909
+          isPrivate: false
+          description: ""
+          sortKey: -1751640526636
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            [
+              {
+                "descricao": "Treino de for\u00e7a",
+                "dataInicio": "2025-07-04T00:00:00Z",
+                "ativo": true,
+                "alunoId": 1,
+                "exercicios": [
+                  {
+                    "exercicioId": 1,
+                    "series": 3,
+                    "repeticoes": 12
+                  }
+                ]
+              }
+            ]
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/treinos/1
+        name: Atualizar Treino
+        meta:
+          id: req_72885174c23849098ebc32a3bd93d737
+          created: 1751640402555
+          modified: 1751640534133
+          isPrivate: false
+          description: ""
+          sortKey: -1751640526536
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            [
+              {
+                "descricao": "Treino de resist\u00eancia",
+                "dataInicio": "2025-07-05T00:00:00Z",
+                "ativo": false,
+                "alunoId": 1,
+                "exercicios": [
+                  {
+                    "exercicioId": 1,
+                    "series": 4,
+                    "repeticoes": 10
+                  }
+                ]
+              }
+            ]
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/treinos/1
+        name: Deletar Treino
+        meta:
+          id: req_7dc48cdebaea458db46a93deef3e2d4d
+          created: 1751640402555
+          modified: 1751640526518
+          isPrivate: false
+          description: ""
+          sortKey: -1751640526436
+        method: DELETE
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/treinos
+        name: Listar Treinos
+        meta:
+          id: req_df3cfb021555480a97533669a98abc1d
+          created: 1751640402555
+          modified: 1751640538962
+          isPrivate: false
+          description: ""
+          sortKey: -1751640526736
+        method: GET
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: INSTRUTOR
+    meta:
+      id: fld_4a9d628c718a47e085e8f2d5e83380ed
+      created: 1751640502667
+      modified: 1751640502667
+      sortKey: -1751640502667
+      description: ""
+    children:
+      - url: http://localhost:3000/instrutores
+        name: Criar Instrutor
+        meta:
+          id: req_21decffd706e402e9a785a3f229a9eff
+          created: 1751640402555
+          modified: 1751640619286
+          isPrivate: false
+          description: ""
+          sortKey: -1751640615200
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            [
+              {
+                "nome": "Carlos Personal"
+              }
+            ]
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/instrutores/1
+        name: Deletar Instrutor
+        meta:
+          id: req_4f3d003731094b41967b2b507574a792
+          created: 1751640402555
+          modified: 1751640624180
+          isPrivate: false
+          description: ""
+          sortKey: -1751640615250
+        method: DELETE
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/instrutores/1
+        name: Atualizar Instrutor
+        meta:
+          id: req_a1d4fb491e704c0db148dcc489204058
+          created: 1751640402555
+          modified: 1751640621182
+          isPrivate: false
+          description: ""
+          sortKey: -1751640615300
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            [
+              {
+                "nome": "Carlos Atualizado"
+              }
+            ]
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/instrutores
+        name: Listar Instrutores
+        meta:
+          id: req_f050739b55b84da9bd15f4f6621a84a0
+          created: 1751640402555
+          modified: 1751640615168
+          isPrivate: false
+          description: ""
+          sortKey: -1751640615100
+        method: GET
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: TREINO EXERCICIO
+    meta:
+      id: fld_70a1cb70f1ab494b9f06be28a7b11668
+      created: 1751640509096
+      modified: 1751640509096
+      sortKey: -1751640509096
+      description: ""
+    children:
+      - url: http://localhost:3000/treinoexercicios
+        name: Listar TreinoExercicios
+        meta:
+          id: req_168ec08456804c5a8c42d4be1323ed6f
+          created: 1751640402555
+          modified: 1751640523199
+          isPrivate: false
+          description: ""
+          sortKey: -1751640514616
+        method: GET
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/treinoexercicios/1
+        name: Atualizar TreinoExercicio
+        meta:
+          id: req_419ccd3e13a94ac899d43e2e5733714c
+          created: 1751640402555
+          modified: 1751640518440
+          isPrivate: false
+          description: ""
+          sortKey: -1751640514416
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            [
+              {
+                "treinoId": 1,
+                "exercicioId": 1,
+                "series": 4,
+                "repeticoes": 10
+              }
+            ]
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/treinoexercicios
+        name: Criar TreinoExercicio
+        meta:
+          id: req_515c411fa51448a69ea85df01980f632
+          created: 1751640402555
+          modified: 1751640521307
+          isPrivate: false
+          description: ""
+          sortKey: -1751640514516
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            [
+              {
+                "treinoId": 1,
+                "exercicioId": 1,
+                "series": 3,
+                "repeticoes": 12
+              }
+            ]
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/treinoexercicios/1
+        name: Deletar TreinoExercicio
+        meta:
+          id: req_6dba432eae734d91b410a93eb7ab45ab
+          created: 1751640402555
+          modified: 1751640514447
+          isPrivate: false
+          description: ""
+          sortKey: -1751640514316
+        method: DELETE
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: EXERCICIO
+    meta:
+      id: fld_77cf0976f0e54e4cad2af784f5d92075
+      created: 1751640671567
+      modified: 1751640682380
+      sortKey: -1751640447047
+      description: ""
+    children:
+      - url: http://localhost:3000/exercicios
+        name: Listar Exercícios
+        meta:
+          id: req_3822d094cd50470f85f4cfcc7ee6bb18
+          created: 1751640402555
+          modified: 1751640700035
+          isPrivate: false
+          description: ""
+          sortKey: -1751640688945
+        method: GET
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/exercicios
+        name: Criar Exercício
+        meta:
+          id: req_6db26e0b8ff94a4c8bb32c06772f662a
+          created: 1751640402555
+          modified: 1751640695355
+          isPrivate: false
+          description: ""
+          sortKey: -1751640688995
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            [
+              {
+                "nome": "Agachamento",
+                "grupoMuscular": "Pernas",
+                "descricao": "Agachamento completo com barra"
+              }
+            ]
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/exercicios/1
+        name: Atualizar Exercício
+        meta:
+          id: req_9c0d08ad037c48b78092904b0628e9e4
+          created: 1751640402555
+          modified: 1751640693156
+          isPrivate: false
+          description: ""
+          sortKey: -1751640688895
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            [
+              {
+                "nome": "Agachamento Atualizado",
+                "grupoMuscular": "Pernas",
+                "descricao": "Agachamento frontal"
+              }
+            ]
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/exercicios/1
+        name: Deletar Exercício
+        meta:
+          id: req_dea9142312fb4802a20a20b8ab8e344a
+          created: 1751640402555
+          modified: 1751640688834
+          isPrivate: false
+          description: ""
+          sortKey: -1751640688795
+        method: DELETE
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: EMAIL
+    meta:
+      id: fld_0d88b8587d5e46ea8d9a4397d9026e28
+      created: 1751640713155
+      modified: 1751640729181
+      sortKey: -1751640446938
+      description: ""
+    children:
+      - url: http://localhost:3000/alunos/email/1
+        name: Enviar Email para Aluno
+        meta:
+          id: req_e397c27989e84451ab612b3bd080c8c2
+          created: 1751640402555
+          modified: 1751640733247
+          isPrivate: false
+          description: ""
+          sortKey: -1751640733219
+        method: POST
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: USUARIOS
+    meta:
+      id: fld_12b2336c12bc43019975e71124975f77
+      created: 1751644331673
+      modified: 1751644331673
+      sortKey: -1751644331673
+      description: ""
+    children:
+      - url: localhost:3000/usuarios
+        name: Listagem
+        meta:
+          id: req_29a3b0b8eef14cfc8719da8160b24527
+          created: 1751644342577
+          modified: 1751644356075
+          isPrivate: false
+          description: ""
+          sortKey: -1751644342577
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/usuarios
+        name: Inclusão
+        meta:
+          id: req_5abb51cadd0b4937afcee58c442ba3d2
+          created: 1751644372054
+          modified: 1751655856262
+          isPrivate: false
+          description: ""
+          sortKey: -1751644372054
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            		"nome": "Edecio Fernando",
+            		"email": "edeciofernando@gmail.com",
+            		"senha": "84362494Vv!",
+            		"perguntaSecreta": "Aluno favorito?",
+            		"respostaSecreta": "Vitor"
+            	}
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/usuarios/1
+        name: Exclusao
+        meta:
+          id: req_50f0a5a890db400b841cd0e30470ecda
+          created: 1751644495049
+          modified: 1751644521070
+          isPrivate: false
+          description: ""
+          sortKey: -1751644372154
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/usuarios/c3baa1f6-f37e-4921-a4b0-f6c0e9eabb15
+        name: Atualizacao
+        meta:
+          id: req_9eb04264ac2c4d03b1c496f651a14d79
+          created: 1751644545441
+          modified: 1751654486718
+          isPrivate: false
+          description: ""
+          sortKey: -1751644372254
+        method: PUT
+        body:
+          mimeType: application/json
+          text: >-
+            {
+            		"nome": "Rian Laquimann",
+            		"email": "rian@gmail.com",
+            		"senha": "$2b$12$NC79M0rgGYG7ot7/85J/6ufGDVOArEA8cKUdZC46/VNNXQGs73YmC",
+            		"perguntaSecreta": "Animal favorito",
+            		"respostaSecreta": "Baleia"
+            	}
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: LOGIN
+    meta:
+      id: fld_b2f41d578aa540ce96c5ac9c1c002e61
+      created: 1751644667425
+      modified: 1751644667425
+      sortKey: -1751644667425
+      description: ""
+    children:
+      - url: localhost:3000/login
+        name: loginPOST
+        meta:
+          id: req_a17014514f9d444d881258ff89baa91b
+          created: 1751645000433
+          modified: 1751655985720
+          isPrivate: false
+          description: ""
+          sortKey: -1751648585687
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            
+            	{
+            		"email": "edeciofernando@gmail.com",
+            		"senha": "84362494Vv!"
+            	}
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: SEGURANCA
+    meta:
+      id: fld_20091ddc22114768badc46fa660853fd
+      created: 1751648591979
+      modified: 1751648591979
+      sortKey: -1751648591979
+      description: ""
+    children:
+      - url: localhost:3000/seguranca/backup
+        name: backupGET
+        meta:
+          id: req_29186db6c06944d990b422d86a11bfcb
+          created: 1751648597059
+          modified: 1751648623868
+          isPrivate: false
+          description: ""
+          sortKey: -1751648597059
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/seguranca/restore
+        name: restorePOST
+        meta:
+          id: req_8870c9b14a4b47df906b1d305f083bd6
+          created: 1751648812129
+          modified: 1751648836413
+          isPrivate: false
+          description: ""
+          sortKey: -1751648812129
+        method: POST
+        headers:
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: ALTERAR SENHA
+    meta:
+      id: fld_3da5758935ad49d197ce39b271f5c7e1
+      created: 1751650410853
+      modified: 1751650410853
+      sortKey: -1751650410853
+      description: ""
+    children:
+      - url: localhost:3000/login/alterar-senha
+        name: updatePassword
+        meta:
+          id: req_b284239676d0477e8db127d1428c0373
+          created: 1751650418059
+          modified: 1751651059990
+          isPrivate: false
+          description: ""
+          sortKey: -1751650418059
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "email": "rian@gmail.com",
+              "senhaAtual": "84362494Vv!",
+              "novaSenha": "84362494v"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: RECUPERAR SENHA
+    meta:
+      id: fld_062ac0496fed4fd9a7bf66214af4d865
+      created: 1751651816997
+      modified: 1751651816997
+      sortKey: -1751651816997
+      description: ""
+    children:
+      - url: localhost:3000/login/recuperar-senha
+        name: recuperarPOST
+        meta:
+          id: req_b1635720c82c47229c9cc558d72119c8
+          created: 1751651826348
+          modified: 1751655974938
+          isPrivate: false
+          description: ""
+          sortKey: -1751651826348
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "email": "edeciofernando@gmail.com",
+              "respostaSecreta": "Vitor",
+              "novaSenha": "84362494Vv!"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.2.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_248ae463242049cf8a322f32cf8473b1
+    created: 1751640165268
+    modified: 1751640165268
+environments:
+  name: Base Environment
+  meta:
+    id: env_0f3cc9f8354646838cadb75a7488bcef
+    created: 1751640165265
+    modified: 1751640165265
+    isPrivate: false
