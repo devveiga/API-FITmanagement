@@ -30,7 +30,7 @@ export function verificaToken(req: Request, res: Response, next: NextFunction) {
     const token = authorization.split(" ")[1]
 
     try {
-        const decode = jwt.verify(token, process.env.JWT_KEY as string)
+        const decode = jwt.verify(token, process.env.JWT_SECRET as string)
         console.log(decode)
         const { userLogadoId, userLogadoNome } = decode as TokenInterface
 

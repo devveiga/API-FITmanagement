@@ -14,5 +14,6 @@ npm install prisma --save-dev
 npm install express
 
 
-.env database path
+.env parameters
 DATABASE_URL = mysql://user:password@host:0000/database
+JWT_SECRET=segredo

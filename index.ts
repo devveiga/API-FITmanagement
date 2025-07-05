@@ -7,6 +7,9 @@ import routesTreinoexercicios from './routes/treinoexercicios'
 import routesUsuarios from './routes/usuarios'
 import routesLogin from './routes/login'
 import routesSeguranca from './routes/seguranca'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const app = express()
 const port = 3000

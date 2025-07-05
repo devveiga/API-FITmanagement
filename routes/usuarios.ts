@@ -107,6 +107,14 @@ router.post("/", async (req, res) => {
     const usuario = await prisma.usuario.create({
       data: { nome, email, senha: hash, perguntaSecreta, respostaSecreta: respostaSecreta ? bcrypt.hashSync(respostaSecreta, 12) : undefined }
     })
+    // Cria log de criação de usuário
+    await prisma.log.create({
+      data: {
+        usuarioId: usuario.id,
+        descricao: "Usuário criado",
+        complemento: `Usuário: ${usuario.id} - ${usuario.nome}`
+      }
+    })
     res.status(201).json(usuario)
   } catch (error) {
     res.status(400).json({ error })
