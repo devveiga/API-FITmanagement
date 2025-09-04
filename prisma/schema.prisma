@@ -7,25 +7,28 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Aluno {
-  id           Int       @id @default(autoincrement())
-  nome         String
-  idade        Int
-  email        String
-  telefone     String?
-  dataCadastro DateTime?
-  instrutor    Instrutor? @relation(fields: [instrutorId], references: [id])
-  instrutorId  Int?
-  treinos      Treino[]
-  usuario      Usuario     @relation(fields: [usuarioId], references: [id])
-  usuarioId    String      @db.VarChar(36)
-  @@map("alunos")
+model Usuario {
+  id               String            @db.VarChar(36) @id @default(uuid())
+  nome             String            @db.VarChar(50)
+  email            String            @db.VarChar(100) @unique()
+  senha            String            @db.VarChar(60)
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  perfil           Perfil            @relation(fields: [perfilId], references: [id])
+  perfilId         Int
+  agendamentos     AgendamentoTreino[]
+  logs             Log[]
+  perguntaSecreta  String?           @db.VarChar(100)
+  respostaSecreta  String?           @db.VarChar(200)
+  @@map("usuarios")
 }
 
-model Instrutor {
-  id     Int     @id @default(autoincrement())
-  nome   String
-  alunos Aluno[]
+model Perfil {
+  id          Int       @id @default(autoincrement())
+  nome        String    @db.VarChar(50)
+  permissoes  String?   @db.VarChar(200) // você pode colocar uma lista ou JSON de permissões
+  usuarios    Usuario[]
+  @@map("perfis")
 }
 
 model Treino {
@@ -33,9 +36,8 @@ model Treino {
   descricao     String
   dataInicio    DateTime
   ativo         Boolean   @default(true)
-  aluno         Aluno     @relation(fields: [alunoId], references: [id])
-  alunoId       Int
   exercicios    TreinoExercicio[]
+  agendamentos  AgendamentoTreino[]
 }
 
 model Exercicio {
@@ -43,39 +45,31 @@ model Exercicio {
   nome           String
   grupoMuscular  String
   descricao      String?
-
-  // Relação: Um exercício pode estar em vários treinos
   treinos        TreinoExercicio[]
 }
 
 model TreinoExercicio {
   id            Int       @id @default(autoincrement())
-
-  // Relação: Treino associado
   treino        Treino    @relation(fields: [treinoId], references: [id])
   treinoId      Int
-
-  // Relação: Exercício associado
   exercicio     Exercicio @relation(fields: [exercicioId], references: [id])
   exercicioId   Int
-
-  // Dados adicionais do exercício no treino
   series        Int
   repeticoes    Int
   carga         Float?
 }
-model Usuario {
-  id            String       @db.VarChar(36) @id @default(uuid())
-  nome          String       @db.VarChar(50)
-  email         String       @db.VarChar(100) @unique()
-  senha         String       @db.VarChar(60)
-  createdAt     DateTime     @default(now())
-  updatedAt     DateTime     @updatedAt
-  alunos        Aluno[]
-  logs          Log[]
-  perguntaSecreta String? @db.VarChar(100)
-  respostaSecreta String? @db.VarChar(200)
-  @@map("usuarios")
+
+model AgendamentoTreino {
+  id          Int       @id @default(autoincrement())
+  usuario     Usuario   @relation(fields: [usuarioId], references: [id])
+  usuarioId   String    @db.VarChar(36)
+  treino      Treino    @relation(fields: [treinoId], references: [id])
+  treinoId    Int
+  status      String    @db.VarChar(20) // ex: "pendente", "concluido", "cancelado"
+  dataCriacao DateTime  @default(now())
+  dataAgendada DateTime
+  observacoes String?   @db.VarChar(200)
+  @@map("agendamentos_treino")
 }
 
 model Log {
